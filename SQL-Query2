@@ -1,0 +1,58 @@
+create database sport;
+use sport;
+
+create table player(
+p_id int primary key,
+p_name varchar(50),
+p_age int
+);
+
+insert into player
+(p_id, p_name, p_age)
+values
+(001, "ram", 19),
+(002, "ram", 18),
+(003, "ram", 21),
+(004, "ram", 20),
+(005, "ram", 18);
+
+Select * from players;
+
+Alter table players
+Add column city varchar(30) default "pune";
+
+Alter table players
+Drop city;
+
+Alter table player
+Rename to players;
+
+Update players
+Set p_name = "azhar"
+where p_id = 5;
+
+set sql_safe_updates = 0;
+
+Delete from players
+Where p_age >= 20;
+
+Select * from players
+Order by p_id ASC; 
+
+insert into players
+(p_id, p_name, p_age, city)
+values
+(003, "rehan", 22, "mumbai"),
+(004, "sohm", 21, "kalyan");
+
+select city, count(p_id)
+from players
+Group by city;
+
+Grant select,insert
+on players
+to 'user_1';
+
+Revoke insert
+on players
+from 'user_1';
